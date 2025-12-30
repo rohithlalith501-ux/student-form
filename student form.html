@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="stylesheet" href="style.css">  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Student Registration Form</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <form method="post" id="RegistrationForm">
+            <br>
+
+
+            <!-- Personal Details -->
+            <fieldset>
+                <legend>Personal Information</legend>
+
+                <label for="name">Full Name:</label><br>
+                <input type="text" id="name" name="fullname" placeholder="Enter your full name" required><br><br>
+
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required><br><br>
+
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" minlength="8" placeholder="Minimum 8 characters"><br><br>
+
+                <label for="dob">Date of Birth:</label><br>
+                <input type="date" id="dob" name="dob"><br><br>
+
+                <label for="phone">Phone Number:</label><br>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="10 digit number"><br><br>
+                <inoput type="placeholder=number"
+            </fieldset>
+
+            <br>
+
+            <!-- Gender Section -->
+            <fieldset>
+                <legend>Gender</legend>
+
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label><br>
+
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label><br>
+
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Other</label>
+            </fieldset>
+
+            <br>
+
+            <!-- Skills Section -->
+            <fieldset>
+                <legend>Skills</legend>
+
+                <input type="checkbox" id="html" name="skills" value="html">
+                <label for="html">HTML</label><br>
+
+                <input type="checkbox" id="css" name="skills" value="css">
+                <label for="css">CSS</label><br>
+
+                <input type="checkbox" id="js" name="skills" value="javascript">
+                <label for="js">JavaScript</label>
+            </fieldset>
+
+            <br>
+
+            <!-- Country Section -->
+            <fieldset>
+                <legend>Country</legend>
+
+                <label for="country">Select Country:</label><br>
+                <select id="country" name="country">
+                    <option value="">--Select--</option>
+                    <option value="india">India</option>
+                    <option value="usa">USA</option>
+                    <option value="germany">Germany</option>
+                </select>
+            </fieldset>
+
+            <br>
+
+            <!-- Address Section -->
+            <fieldset>
+                <legend>Address</legend>
+
+                <textarea name="address" rows="4" cols="30" placeholder="Enter your address"></textarea>
+            </fieldset>
+
+            <br>
+
+            <!-- File Upload -->
+            <fieldset>
+                <legend>Profile Photo</legend>
+
+                <label for="photo">Upload Profile Photo:</label><br>
+                <input type="file" id="photo" name="photo" title="Upload your profile photo" placeholder="Choose a profile photo">
+            </fieldset>
+
+            <br>
+
+            <!-- Buttons -->
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+
+        </form>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2025 Student Registration</p>
+    </footer>
+<script>
+document.getElementById("registrationForm").addEventListener("submit", function (event) {
+
+    // Get values
+    let password = document.getElementById("password").value;
+    let phone = document.getElementById("phone").value;
+
+    let genderChecked = document.querySelector('input[name="gender"]:checked');
+    let skillsChecked = document.querySelectorAll('input[name="skills"]:checked');
+
+    // Password validation
+    if (password.length < 8) {
+        alert("Password must be at least 8 characters long.");
+        event.preventDefault();
+        return;
+    }
+
+    // Phone validation
+    if (phone !== "" && phone.length !== 10) {
+        alert("Phone number must be 10 digits.");
+        event.preventDefault();
+        return;
+    }
+
+    // Gender validation
+    if (!genderChecked) {
+        alert("Please select your gender.");
+        event.preventDefault();
+        return;
+    }
+
+    // Skills validation
+    if (skillsChecked.length === 0) {
+        alert("Please select at least one skill.");
+        event.preventDefault();
+        return;
+    }
+
+    // If all validations pass
+    alert("Form submitted successfully!");
+});
+</script>
+</body>
+</html>
